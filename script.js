@@ -16,8 +16,14 @@ fetch('myfile.json')
 function buscarRegistros(){
     eliminarElementos();
     let texto = inputBuscar.value;
-    const result = array_principal.filter(element => element.split(";")[0].includes(texto,0));
+    const regex =  new RegExp("^"+texto)
+    const result = array_principal.filter(element => regex.test(limpiarDatos(element.split(";")[0])));
+
+
+
     pintarElementos(result);
+
+
 }
 
 
