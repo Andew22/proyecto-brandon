@@ -14,8 +14,23 @@ fetch('nuevojson1.json')
 function buscarRegistros(){
     eliminarElementos();
     let texto = inputBuscar.value;
+    let contador = 0;
     const regex =  new RegExp("^"+texto)
-    const result = array_principal.filter(element => regex.test(limpiarDatos(element.split(";")[0])));
+    const result = array_principal.filter(element => 
+        {
+            if(contador<=10 && regex.test(limpiarDatos(element.split(";")[0]))){
+                contador++;
+                return true;
+            }else{
+                return false;
+            }
+        });
+
+
+
+
+
+
     pintarElementos(result);
 }
 
